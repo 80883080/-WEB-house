@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>顶部文字</title>
+</head>
+<style>
+*{margin:0;padding: 0 }
+	body{width: 100%;height: 100%;position: relative;background: url(img/bg_top.png);}
+	#fon{position: fixed;width: 100%;height: 80px;top: 17%}
+	h1{width: auto;height: 80px;color: #ffc600;text-align: center;line-height: 80px;font-size: 56px;}
+
+</style>
+<body>
+	<div id="fon"><h1 id="w">欢迎欢迎热烈欢迎</h1></div>
+</body>
+<script>
+	function ExternalCall(json)
+		{	
+		var w=eval('(' + json + ')').welcome;
+   	 	document.getElementById("w").innerHTML=w;
+		}
+</script>
+</html>

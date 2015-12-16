@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>楼盘展示</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<style>
+	#content3{height: 60%;width: 100%;position:absolute;top: 10%;border-bottom: 1px #fff solid;}
+	#pro{position: relative;height: 100%;float: left;display: inline;margin-left: 5%;width:100%;overflow: hidden;}
+	#pro ul{height:100%;float: left;display: inline;width:50000px;position: relative;}
+	.btn{position: absolute;height: 100px;width: 50px;background: #fff;z-index: 100;opacity: 0;top:-20%}
+	.btn p{display: block;text-indent: -9999px;}
+	#prev{left: 0}
+	#next{right:0}
+	#prev1{left: 10%}
+	#next1{right:10%}
+	#prev2{left: 20%}
+	#pro ul li{height: 100%;float: left;display: inline;width: auto;position: relative;top: 100%;opacity: 0}
+
+	.pro_li1{margin-left: -220px;}
+	.pro_li{margin-left: -170px;}
+	.pro{float: left;display: inline;position: relative;width:700px;height: 100%}
+	.pro .proName{width: 15%;position: absolute;bottom: -9px;}
+	.proName h3{display: block;height:17px;width:17px;background: url(img/o.png);cursor: pointer; text-indent: -9999px;margin-left: 13px}
+	.proName h1{color: #fff;font-size: 2em;font-weight: 500}
+	.pro_item{width: 40%;position:relative;height: 100%;overflow: hidden;float: left;margin-left: 0%;}
+	
+
+	#pro .pro_item1{margin-left:-10%}
+	#pro .pro_item1 .pro_itemLeft{margin-top: 110%}
+	#pro .pro_item1 .pro_itemImg{margin-top: 45%}
+	#pro .pro_item1 .pro_itemRight{margin-top: 73%}
+	.pro_itemLeft{width: 50%;float: left;display: inline;height: 40px;margin-top: 60%}
+	.pro_itemLeft p{height: 20px;line-height: 20px;text-align: right;color: #fff;font-size: 1em}
+	.pro_itemLeft span{display:block;height: 20px;line-height: 20px;text-align: right;color: #fff;font-size: 1em}
+	.pro_itemImg{position: absolute;width: 13%;top: 5%;left:50%;}
+	.pro_itemRight{float: left;display: inline;width: 40%;overflow: hidden;height: 300px;margin-top: 30%;margin-left: 10%}
+	.pro_itemRight h2{float: left;display: inline;width: 100%;color: #fff;font-size: 2em}
+	.pro_itemRight span{float: left;display: inline;font-size: 1em;color: #fff;margin-bottom: 30%}
+	#pro ul li .pro_itemRight ul{float: left;display: inline;width: 300px;height: 900px;}
+	#pro ul li .pro_itemRight ul li{float: left;display: inline;height: 40px;}
+	#pro ul li .pro_itemRight ul li img{width: 15%;float: left;display: inline;}
+	#pro ul li .pro_itemRight ul li h4{width: 100px;float: left;display:inline;font-size: 1.4em;line-height: 30px;text-align: left;margin: -3px 8px;}
+	.pro a{width: 100%;height: 100%;}
+
+
+	@media screen and (max-width:4000px){
+		.pro_li1{margin-left: -440px;}
+		.pro_li{margin-left: -340px;}
+		.pro{width:1400px;}
+		.proName h1{font-size: 5em;margin-left: -30px;}
+		.pro_itemLeft p{font-size: 2em;}
+		.pro_itemLeft span{font-size: 2.5em;margin-bottom: 20%;height: 60px;line-height: 60px;}
+		.pro_itemRight h2{font-size: 4em}
+		.pro_itemRight span{font-size: 2em}
+		#pro ul li .pro_itemRight ul li{height: 45px;}
+		#pro ul li .pro_itemRight ul li img{width: 20%}
+	}
+
+	@media screen and (max-width:3000px){
+		.pro_li1{margin-left: -330px;}
+		.pro_li{margin-left: -270px;}
+		.pro{width:1300px;}
+		.proName h1{font-size: 4em;margin-left: -30px;}
+		.pro_itemLeft p{font-size: 1.8em;}
+		.pro_itemLeft span{font-size: 1.8em;margin-bottom: 20%;height: 51px;line-height: 51px;}
+		.pro_itemRight h2{font-size: 3em}
+		.pro_itemRight span{font-size: 1.5em}
+		#pro ul li .pro_itemRight ul li{height: 45px;}
+		#pro ul li .pro_itemRight ul li img{width: 20%}
+	}
+
+	@media screen and (max-width:2000px){
+		.pro_li1{margin-left: -220px;}
+		.pro_li{margin-left: -270px;}
+		.pro{width:820px;}
+		.proName h1{font-size: 2.2em;margin-left: 0px;}
+		.pro_itemLeft p{font-size: 1.2em;}
+		.pro_itemLeft span{font-size: 1.3em;margin-bottom: 20%;height: 40px;line-height: 40px;}
+		.pro_itemRight h2{font-size: 2em}
+		.pro_itemRight span{font-size: 1.2em}
+		#pro ul li .pro_itemRight ul li{height: 45px;}
+		#pro ul li .pro_itemRight ul li img{width: 20%}
+	}
+
+	@media screen and (max-width:1500px){
+		.pro_li1{margin-left: -110px;}
+		.pro_li{margin-left: -130px;}
+		.pro{width:700px;}
+		.proName h1{font-size: 2em;margin-left: 0px;}
+		.pro_itemLeft p{font-size: 1em;}
+		.pro_itemLeft span{font-size: 1em;margin-bottom: 20%;height: 40px;line-height: 40px;}
+		.pro_itemRight h2{font-size: 2em}
+		.pro_itemRight span{font-size: 1em}
+		#pro ul li .pro_itemRight ul li{height: 45px;}
+		#pro ul li .pro_itemRight ul li img{width: 20%}
+	}
+
+	@media screen and (max-width:800px){
+		.proName h1{font-size: 1.5em;margin-left: 0px;}
+		.pro_itemRight h2{font-size: 1.5em}
+		#pro ul li .pro_itemRight ul li{height: 25px;}
+		#pro ul li .pro_itemRight ul li img{width: 10%}
+		#pro .pro_item1 .pro_itemLeft{margin-top: 50%}
+		#pro .pro_item1 .pro_itemImg{margin-top: 0%}
+		#pro .pro_item1 .pro_itemRight{margin-top: 23%}
+	}
+</style>
+<body>
+	<div id="border_">
+		<div id="border_1"></div>
+	</div>
+	<img src="img/ruc_bg_63.png" alt="背景" id="bg">
+	<div id="bgTopBai"></div>
+	<div id="bgTop"><img src="img/ruc_bg_63.png" alt="背景"></div>
+	
+	<div id="content3">
+		<div id="prev" class="btn"><p>《</p></div>
+		<div id="next" class="btn"><p>》</p></div>
+		<div id="prev1" class="btn"><p>《</p></div>
+		<div id="next1" class="btn"><p>》</p></div>
+		<div id="prev2" class="btn"><p>《</p></div>
+		<div id="pro">
+			<ul class="pro_ul">
+				<li>		
+					<div class="pro">
+						<div class="proName">
+							<h1>黄浦区</h1>
+							<h3>O</h3>
+						</div>
+						<div class="pro_item">
+							<div class="pro_itemLeft">
+								<p>上海市黄浦区外滩</p>
+								<span>021-55477785</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_1_1.html">华府天地睿</a></h2>
+								<span>hua fu tian di rui</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="pro_item pro_item1">
+							<div class="pro_itemLeft">
+								<p>上海市黄浦区延安东路</p>
+								<span>021-554725514</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_1_2.html">露香园</a></h2>
+								<span>lu xiang yuan</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+
+				<li class="pro_li1">
+					<div class="pro">
+						
+						<div class="pro_item">
+							<div class="pro_itemLeft">
+								<p>上海市黄浦区大景路</p>
+								<span>021-88745547</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_1_3.html">复兴珑御</a></h2>
+								<span>fu xing long yu</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="pro_item pro_item1">
+							<div class="pro_itemLeft">
+								<p>上海市老西门文庙路101</p>
+								<span>021-88088847</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_1_4.html">中福浦江汇</a></h2>
+								<span>zhong fu pu jiang</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+
+				<li class="pro_li">
+					<div class="pro">
+						<div class="proName">
+							<h1>徐汇区</h1>
+							<h3>O</h3>
+						</div>
+						<div class="pro_item">
+							<div class="pro_itemLeft">
+								<p>上海市徐汇区田林路</p>
+								<span>021-88547745</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_2_1.html">保利西岸</a></h2>
+								<span>bao li xi an</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="pro_item pro_item1">
+							<div class="pro_itemLeft">
+								<p>上海市徐汇区田林柳州路</p>
+								<span>021-77541152</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_2_2.html">金巢铂瑞阁</a></h2>
+								<span>jin chao bo rui ge</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</li>
+				<li class="pro_li1">
+					<div class="pro">
+						
+						<div class="pro_item">
+							<div class="pro_itemLeft">
+								<p>上海市徐汇区衡山路</p>
+								<span>021-44785563</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_2_3.html">尚汇豪庭</a></h2>
+								<span>shang hui hao ting</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="pro_item pro_item1">
+							<div class="pro_itemLeft">
+								<p>上海市徐汇区枫林路东安路交口</p>
+								<span>021-55478854</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_2_4.html">嘉御庭</a></h2>
+								<span>jai yu ting</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</li>
+
+				<li class="pro_li">
+					<div class="pro">
+						<div class="proName">
+							<h1>长宁区</h1>
+							<h3>O</h3>
+						</div>
+						<div class="pro_item">
+							<div class="pro_itemLeft">
+								<p>上海市长宁区天山路</p>
+								<span>021-44756698</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_3_1.html">中星美华村</a></h2>
+								<span>zhong xing mei hua</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="pro_item pro_item1">
+							<div class="pro_itemLeft">
+								<p>上海市长宁区中环路天涯商务</p>
+								<span>021-88884566</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_3_2.html">淮海名邸</a></h2>
+								<span>huai hai ming di</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</li>
+
+				<li class="pro_li">
+					<div class="pro">
+						<div class="proName">
+							<h1>静安区</h1>
+							<h3>O</h3>
+						</div>
+						<div class="pro_item">
+							<div class="pro_itemLeft">
+								<p>上海市静安区江宁路康定</p>
+								<span>021-55662214</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_4_1.html">南京西路</a></h2>
+								<span>nan jing xi lu</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="pro_item pro_item1">
+							<div class="pro_itemLeft">
+								<p>上海市静安区坤华路和一大厦</p>
+								<span>021-99547785</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_4_2.html">嘉天汇</a></h2>
+								<span>jia tian hui</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</li>
+				<li class="pro_li1">
+					<div class="pro">
+						
+						<div class="pro_item">
+							<div class="pro_itemLeft">
+								<p>上海市静安区海防路20号</p>
+								<span>021-99658874</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_4_3.html">静安豪景苑</a></h2>
+								<span>jing an hao jing</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="pro_item pro_item1">
+							<div class="pro_itemLeft">
+								<p>上海市静安区武定路10号</p>
+								<span>021-55478884</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_4_4.html">远中风华园</a></h2>
+								<span>yuan zhong feng hua</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</li>
+
+				<li class="pro_li">
+					<div class="pro">
+						<div class="proName">
+							<h1>虹口区</h1>
+							<h3>O</h3>
+						</div>
+						<div class="pro_item">
+							<div class="pro_itemLeft">
+								<p>上海市虹口区大柏树70号</p>
+								<span>021-66644457</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_5_1.html">建邦16区</a></h2>
+								<span>jian bang 16 qu</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="pro_item pro_item1">
+							<div class="pro_itemLeft">
+								<p>上海市虹口区凉城48号</p>
+								<span>021-77458854</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_5_2.html">融创外滩188</a></h2>
+								<span>rong chuang wai tan188</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</li>
+
+				<li class="pro_li1">
+					<div class="pro">
+						
+						<div class="pro_item">
+							<div class="pro_itemLeft">
+								<p>上海市虹口区广中路114号</p>
+								<span>021-77458885</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_5_3.html">宏惠花苑</a></h2>
+								<span>hong hui hua yuan</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="pro_item pro_item1">
+							<div class="pro_itemLeft">
+								<p>上海市虹口区四平路44号</p>
+								<span>021-99548887</span>
+							</div>
+							<img src="img/pro_img.png" alt="坐标" class="pro_itemImg">
+							<div class="pro_itemRight">
+								<h2><a href="content3_3_5_4.html">豪景苑</a></h2>
+								<span>hao jing yuan</span>
+								<ul>
+									<li><img src="img/round1.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round2.png" alt="圆形"><h4>120</h4></li>
+									<li><img src="img/round3.png" alt="圆形"><h4>120</h4></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</li>
+				<li></li>
+			</ul>
+			
+		</div>
+		
+	</div>
+
+	<div id="foot">
+		<div id="foot_left"><img src="img/foot_left.png" alt="小地图"><p style="left:14.8%;top:58%">地址</p></div>
+		<div id="foot_mi">
+			
+				<div id="mi_title1" class="mi_title"><p>总房屋套数</p><span>2100568</span></div>
+				<div id="mi_title2" class="mi_title"><p>总销售房屋套数</p><span>2100568</span></div>
+				<div id="mi_title3" class="mi_title"><p>昨日销售量</p><span>35</span></div>
+			
+			<div id="canvas-holder">
+			<canvas id="chart-area" width="400" height="400" />
+			</div>
+		</div>
+		<div id="foot_right">
+			<div class="foot_right">
+				<p>本月销售计划</p>
+				<canvas id="canvas" height="300" width="500"></canvas>
+			</div>
+		</div>
+		<div id="foot_right1">
+			<div class="foot_right">
+				<p>本年销售计划</p>				
+				<canvas id="canvas1" height="300" width="500"></canvas>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/Chart.js"></script>
+<script>
+
+
+
+	$(function(){
+		
+		var chanWid=parseInt($(".pro").width());
+		var $prev=$("#prev");
+		var $next=$("#next");
+		var $prev1=$("#prev1");
+		var $next1=$("#next1");
+		var $prev2=$("#prev2");
+		var $mi_title=$(".mi_title");
+		var $pro_ul=$(".pro_ul");
+		var num=$pro_ul.find("h2").length;
+		var sum=0;
+		var sumLEN=0;
+		function fn(){
+			$("#mi_title1").fadeIn(700);
+    		$("#mi_title2").fadeIn(1500);
+    		$("#mi_title3").fadeIn(2500);
+		}		
+		setTimeout(fn,1500);
+		$("#pro ul li").animate({top:"0",opacity: "1"},3000);
+		$prev.click(Change0);
+		$next.click(Change1);
+		$prev1.click(Change2);
+		$next1.click(Change3);
+		$prev2.click(Change4);
+
+
+
+		function Change0(){
+			sum=0;
+			$pro_ul.stop(true).animate({left:sum},800);
+		}
+		function Change1(){
+			sum=-chanWid*1;
+			$pro_ul.stop(true).animate({left:sum},800);
+		}
+		function Change2(){
+			sum=-chanWid*2;
+			$pro_ul.stop(true).animate({left:sum},800);
+		}
+		function Change3(){
+			sum=-chanWid*3;
+			$pro_ul.stop(true).animate({left:sum},800);
+		}
+		function Change4(){
+			sum=-chanWid*4;
+			$pro_ul.stop(true).animate({left:sum},800);
+		}		
+	});
+
+
+        var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+		var lineChartData = {
+			labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul","Mar","Apr","May","Jun","Jul"],
+			datasets : [
+				{
+					label: "My First dataset",
+					fillColor : "rgba(255,255,255,0.1)",
+					strokeColor : "rgba(110,110,110,0.1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#00f6ff",
+					pointHighlightFill : "#00c6ff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [25,38,48,58,71,67,68,55,48,43,38,25]
+				},
+				{
+					label: "My Second dataset",
+					fillColor : "rgba(255,255,255,0.2)",
+					strokeColor : "rgba(150,150,150,0.1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#00f6ff",
+					pointHighlightFill : "#00c6ff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data : [23,26,39,42,44,46,43,43,41,37,35,19]
+				}
+			]
+		}
+     
+		var doughnutData = [
+				{
+					value: 300,
+					color:"#bb4816",
+					highlight: "#F7464A",
+					label: "已"
+				},
+				{
+					value: 150,
+					color: "rgba(0,0,0,.02)",
+					highlight: "#5AD3D1",
+					label: "未",
+				}
+			];
+
+			window.onload = function(){
+				var ctx = document.getElementById("chart-area").getContext("2d");
+				window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {responsive : true,segmentShowStroke : true});
+				var ctx1 = document.getElementById("canvas").getContext("2d");
+				window.myLine = new Chart(ctx1).Line(lineChartData, {responsive: true,scaleGridLineColor:"rgba(255,255,255,.2)"
+});
+				var ctx2 = document.getElementById("canvas1").getContext("2d");
+				window.myLine1 = new Chart(ctx2).Line(lineChartData, {responsive: true,scaleGridLineColor:"rgba(255,255,255,.2)"
+});		
+
+			};
+
+</script>
+<script type="text/javascript" src="js/addrUrl.js"></script>
+</html>

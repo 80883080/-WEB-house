@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>楼盘展示</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div id="border_">
+		<div id="border_1"></div>
+	</div>
+	<img src="img/ruc_bg_3113.png" alt="背景" id="bg">
+	<div id="bgTopBai"></div>
+	<div id="bgTop"><img src="img/ruc_bg_3113.png" alt="背景"></div>
+	
+	<div id="content">
+		<div id="con_top">
+			<ul>
+				<li><img src="img/round1.png" alt="圆形"><p>32</p></li>
+				<li><img src="img/round2.png" alt="圆形"><p>32</p></li>
+				<li><img src="img/round3.png" alt="圆形"><p>32</p></li>
+			</ul>
+		</div>
+		<div id="con_bottom">
+			<ul>
+				<li><h1>Naga上院</h1></li>
+				<li><h4>Nage shang yuan</h4></li>
+				<li><h4>北京市东直门北小街201号</h4></li>
+				<li><h4>010-57412544</h4></li>
+			</ul>
+			
+		</div>
+	</div>
+
+	<div id="foot">
+		<div id="foot_left"><img src="img/foot_left.png" alt="小地图"><p style="left:12.8%;top:39%">地址</p></div>
+		<div id="foot_mi">
+			
+				<div id="mi_title1" class="mi_title"><p>总房屋套数</p><span>2100568</span></div>
+				<div id="mi_title2" class="mi_title"><p>总销售房屋套数</p><span>2100568</span></div>
+				<div id="mi_title3" class="mi_title"><p>昨日销售量</p><span>35</span></div>
+			
+			<div id="canvas-holder">
+			<canvas id="chart-area" width="400" height="400" />
+			</div>
+		</div>
+		<div id="foot_right">
+			<div class="foot_right">
+				<p>本月销售计划</p>
+				<canvas id="canvas" height="300" width="500"></canvas>
+			</div>
+		</div>
+		<div id="foot_right1">
+			<div class="foot_right">
+				<p>本月销售计划</p>
+				<canvas id="canvas1" height="300" width="500"></canvas>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/Chart.js"></script>
+<script>
+	$(function(){
+		var $con_top=$("#con_top");
+		var $mi_title=$(".mi_title");
+		
+		function fn(){
+			$("#mi_title1").fadeIn(700);
+    		$("#mi_title2").fadeIn(1500);
+    		$("#mi_title3").fadeIn(2500);
+		}
+		
+		function fn2(){
+			$("#con_bottom ul li").eq(0).fadeIn(500);
+    		$("#con_bottom ul li").eq(1).fadeIn(1300);
+    		$("#con_bottom ul li").eq(2).fadeIn(1500);
+    		$("#con_bottom ul li").eq(3).fadeIn(2000);
+    		$("#con_top ul li").eq(0).animate({left:'-1000px',opacity:'1'},800);
+    		$("#con_top ul li").eq(1).animate({left:'-1000px',opacity:'1'},1500);
+    		$("#con_top ul li").eq(2).animate({left:'-1000px',opacity:'1'},2000);
+    		
+		}
+		setTimeout(fn,1500);
+		setTimeout(fn2,500);
+			
+	});
+
+
+        var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+		var lineChartData = {
+			labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul","Mar","Apr","May","Jun","Jul"],
+			datasets : [
+				{
+					label: "My First dataset",
+					fillColor : "rgba(255,255,255,0.1)",
+					strokeColor : "rgba(110,110,110,0.1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#00f6ff",
+					pointHighlightFill : "#00c6ff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [25,38,48,58,71,67,68,55,48,43,38,25]
+				},
+				{
+					label: "My Second dataset",
+					fillColor : "rgba(255,255,255,0.2)",
+					strokeColor : "rgba(150,150,150,0.1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#00f6ff",
+					pointHighlightFill : "#00c6ff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data : [23,26,39,42,44,46,43,43,41,37,35,19]
+				}
+			]
+
+		}
+     
+		var doughnutData = [
+				{
+					value: 300,
+					color:"#bb4816",
+					highlight: "#F7464A",
+					label: "已"
+				},
+				{
+					value: 150,
+					color: "rgba(0,0,0,.02)",
+					highlight: "#5AD3D1",
+					label: "未",
+				}
+
+			];
+
+			window.onload = function(){
+				var ctx = document.getElementById("chart-area").getContext("2d");
+				window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {responsive : true,segmentShowStroke : true});
+				var ctx1 = document.getElementById("canvas").getContext("2d");
+				window.myLine = new Chart(ctx1).Line(lineChartData, {responsive: true,scaleGridLineColor:"rgba(255,255,255,.2)"
+});
+				var ctx2 = document.getElementById("canvas1").getContext("2d");
+				window.myLine1 = new Chart(ctx2).Line(lineChartData, {responsive: true,scaleGridLineColor:"rgba(255,255,255,.2)"
+});		
+
+			};
+
+</script>
+<script type="text/javascript" src="js/addrUrl.js"></script>
+
+</html>

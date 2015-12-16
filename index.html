@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<style>
+	@font-face{
+	font-family: myFirstFont;
+	src: url('font/myFirstFont1.ttf');
+	}
+	span,p,h1,h2,h3,h4,h5,h6{font-family: "myFirstFont"}
+	
+	#bg{width: 100%;position: fixed;height: 100%;}
+	#bg img{width: 100%;float: left;}
+	#wrap{width: 100%;height: 100%;position: fixed;}
+	#top{width: 98%;height: 40px;background: none;margin: 1%;position: fixed;border-radius: 5px;}
+	#top1{width: 98%;height: 40px;background: #000;margin: 1%;position: fixed;border-radius: 5px;opacity: 0.5}
+	#rights{width: 80%;height: 90%;position: fixed;;top: 10%}
+	#left{width: 20%;height: 90%;position: fixed;left: 78%;top: 10%}
+	.time{width:100%; height:20%;float: left;display: inline;}
+	.time ul{width:100%;height:65%;float: left;margin-right: 5%}
+	.time ul li{width: 9%;height:50px;float: right;margin-right:2%;background: #fff;border-radius:10%;opacity: 0.8;margin-top:4%}
+	.time ul li p{text-align: center;font-size: 3.5em;color: #398bdc;font-weight: 600;line-height:50px;}
+	.time2{width: 60%;height: 20%;float: right;}
+	.time2 .time{height: 50%}
+	.time2 .time li{height: 30px;}
+	.line{width: 110%;height: 26%;float: left;display: inline;margin-top: 4%;margin-left: -7%;position: relative;}
+	.line img{width: 100%;height: auto;display: none}
+	
+
+	.WPro{width: 17%;position: absolute;}
+	.BPro{width: 70%;height: 70%;position: relative;float: right;opacity: 0.8;z-index: 100}
+	.SPro{width: 100%;height: 100%;position: absolute;}
+	.SPro ul li{position: absolute;width:30%;left: 40%;top: 20%;border-radius: 50%;z-index: -100;opacity: 0;z-index: 50}
+	.WPro1{left: 50%}
+	.WPro2{left: 20%;top: 55%}
+	.WPro3{left: 70%;top: 30%}
+	.WPro4{left: 65%;top: 65%}
+	.WPro5{left: 20%;top: 15%}
+	.WPro6{left: 40%;top:35%}
+	.WPro7{left: 35%;top: 75%}
+	.canvas{width: 100%;height: 100%}
+	.canFont{position: absolute;top:25%;right:3%;width: 100%;display: none}
+	.canFont h1{position: relative;float: right;color: #fff;font-weight: 600;right:10%;font-size: 2.5em}
+	.canFont p{position: relative;width: 100%;text-align: center;color: #fff;font-size: 1.6em;font-weight:600;float: left}
+	.canFontSmall{position: absolute;top:25%;right:3%}
+	.canFontSmall h2{position: relative;float: right;color: #fff;font-weight: 500;right:8%;font-size: 1em}
+	.canFontSmall span{position: relative;float: right;width: 100%;text-align: center;color: #fff;font-size: 0.8em;}
+	.WProB{width: 80%;height: 10%;position: absolute;left: -50%;border-bottom:1px #fff solid;top:40%;display: none}
+	.WProB img{margin-left: 5%;width: 75%}
+	
+	.PieB img{width: 106%;height: 106%;position: absolute;top: -2%;left:-3%;}
+	#top h1{color: #ffc600;font-size: 2.5em;height:40px;position: relative;line-height:40px;margin-left: 20px;float: left;}
+	#top h3{color: #fff;font-size: 1.5em;height:40px;position: relative;line-height:40px;margin-left: 20px;float: left}
+	.time h3{width: 100%;height: 35%;float: left;margin-right: 5%;text-align:right;font-size: 2em;color: #ffc600;font-weight:600;}
+	.time2 h3{font-size: 1.5em;}
+	.time2 ul li p{font-size: 1.5em;}
+	.WProB h3{font-size: 1.5em;color: #fff;float: left;width: 50%}
+	.WProB h4{font-size: 1.5em;color: #fff;float: right;margin-right: 25%}
+	.WProB h5{position: absolute;top: 0;left: 10%;color: #c6382c;font-size: 1.2em}
+	.href1{width: 100%;height: 100%;position: absolute;top: 0;left: 0;display: none}
+	.href1 a{width: 100%;height: 100%;display: block;}
+	
+	@media screen and (max-width:4000px){
+		#top{height: 180px;}
+		#top1{height: 180px;border-radius: 15px;}
+		#top h1{font-size: 7em;line-height: 180px;font-weight: 700;height: 180px;}
+		#top h3{font-size: 6em;line-height: 180px;height: 180px;font-weight: 600}
+		#top img{width: 140px;height: auto;float: left;margin-top: 20px;margin-left: 30px;}
+		.WProB h3{font-size: 3em}
+		.WProB h4{font-size: 3em}
+		.WProB h5{font-size: 2.5em}
+		.canFont h1{font-size: 4em}
+		.canFont p{font-size: 4em}
+		.canFontSmall h2{font-size: 2em}
+		.canFontSmall span{font-size: 2em}
+		.time ul li{width: 80px;height:130px;}
+		.time h3{font-size: 6em;margin-top: 110px}
+		.time ul li p{height: 130px;line-height: 130px;text-align: center;font-size:7em}
+		.time2 h3{font-size: 3em;}
+		.time2 .time ul li{width: 40px;height:65px;}
+		.time2 .time ul li p{height: 65px;line-height: 65px;font-size: 3em}
+	}
+
+	@media screen and (max-width:3000px){
+		#top{height: 100px;}
+		#top1{height: 100px;}
+		#top h1{font-size: 5em;line-height:100px;font-weight: 600}
+		#top h3{font-size: 4em;line-height: 100px;font-weight: 600}
+		#top img{width: 80px;height: auto;float: left;margin-top: 10px;margin-left: 30px;}
+		.WProB h3{font-size: 2em}
+		.WProB h4{font-size: 2em}
+		.WProB h5{font-size: 2em}
+		.canFont h1{font-size: 3em}
+		.canFont p{font-size: 3em}
+		.canFontSmall h2{font-size: 1.5em}
+		.canFontSmall span{font-size: 1.5em}
+		.time ul li{width: 60px;height:100px;}
+		.time h3{font-size: 2.5em}
+		.time ul li p{height: 110px;line-height: 110px;text-align: center;font-size:6em}
+		.time2 h3{font-size: 2em;}
+		.time2 .time ul li{width: 35px;height:55px;}
+		.time2 .time ul li p{height: 55px;line-height: 55px;font-size: 2em}
+	}
+
+	@media screen and (max-width:2000px){
+		#top1{height: 50px;}
+		#top{height: 50px;}
+		#top h1{font-size: 2em;line-height:50px;}
+		#top h3{font-size: 2em;line-height: 50px;}
+		#top img{width: 40px;height: auto;float: left;margin-top: 5px;margin-left: 10px;}
+
+		.WProB h3{font-size: 1.5em}
+		.WProB h4{font-size: 1.5em}
+		.WProB h5{font-size: 1.5em}
+		.canFont h1{font-size: 2em}
+		.canFont p{font-size: 2em}
+		.canFontSmall h2{font-size: 1.5em}
+		.canFontSmall span{font-size: 1.5em}
+		.time ul li{width: 40px;height:70px;}
+		.time h3{font-size: 2em}
+		.time ul li p{height: 70px;line-height: 70px;text-align: center;font-size:5em}
+		.time2 h3{font-size: 1.5em;}
+		.time2 .time ul li{width: 20px;height:35px;}
+		.time2 .time ul li p{height: 35px;line-height: 35px;font-size: 1.5em}
+	}
+
+	@media screen and (max-width:1600px){
+		#top{height: 40px;}
+		#top1{height: 40px;}
+		#top h1{font-size: 1.5em;line-height:40px;}
+		#top h3{font-size: 1.5em;line-height: 40px;}
+		#top img{width: 30px;height: auto;float: left;margin-top: 5px;margin-left: 10px;}
+		.WProB h3{font-size: 1.2em}
+		.WProB h4{font-size: 1.2em}
+		.WProB h5{font-size: 1em}
+		.canFont h1{font-size: 1.8em}
+		.canFont p{font-size: 1.8em}
+		.canFontSmall h2{font-size: 1.2em}
+		.canFontSmall span{font-size: 1.2em}
+		.time ul li{width: 25px;height:40px;}
+		.time h3{font-size: 1.8em}
+		.time ul li p{height: 40px;line-height:40px;text-align: center;font-size:2em}
+		.time2 h3{font-size: 1.2em;}
+		.time2 .time ul li{width: 15px;height:30px;}
+		.time2 .time ul li p{height: 30px;line-height: 30px;font-size: 1.2em}
+	}
+	</style>
+</head>
+
+<script type="text/javascript" src="js/Chart.js"></script>
+
+<body>
+	<div id="border_">
+		<div id="border_1"></div>
+	</div>
+	<div id="bg"><img src="img/ruc_bg_601.png" alt="背景"></div>
+	<div id="wrap">
+		<div id="top1"></div>
+		<div id="top">
+			<img src="img/logo.png" alt="logo">
+			<h1>住建部</h1>
+			<h3>在售商品房监控平台</h3>
+		</div>
+		<div id="rights">
+			<div class="WPro WPro1">
+			<div class="WProB">
+				<img src="img/pie_bg.png" alt="统计"><h5>6012</h5>
+				<h3>北京</h3><h4>1240</h4>
+			</div>	
+			<div class="BPro">
+				<canvas id="canvas1" class="canvas" height="400" width="400"></canvas>
+				<div class="canFont"><h1>67%</h1><p>北京</p></div>
+				<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+				<div class="href1"><a href="content3_1.html"></a></div>
+			</div>
+			<div class="SPro">
+				<ul>
+					<li><canvas id="canvas1_1" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>75%</h2><span>东城区</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas1_2" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>67%</h2><span>西城区</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas1_3" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>85%</h2><span>丰台区</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas1_4" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>75%</h2><span>顺义区</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas1_5" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>80%</h2><span>海淀区</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+				</ul>
+			</div>
+			</div>
+
+			<div class="WPro WPro2">	
+				<div class="WProB">
+				<img src="img/pie_bg.png" alt="统计"><h5>5435</h5>
+				<h3>重庆</h3><h4>1040</h4>
+			</div>	
+			<div class="BPro">
+				<canvas id="canvas2" class="canvas" height="400" width="400"></canvas>
+				<div class="canFont"><h1>77%</h1><p>重庆</p></div>
+				<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+				<div class="href1"><a href="content3_2.html"></a></div>
+			</div>
+			<div class="SPro">
+				<ul>
+					<li><canvas id="canvas2_1" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>77%</h2><span>沙坪坝</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas2_2" class="canvas" height="400" width="400"></canvas>						<div class="canFontSmall"><h2>67%</h2><span>沙坪坝</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas2_3" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>85%</h2><span>渝中区</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas2_4" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>75%</h2><span>大渡口</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas2_5" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>80%</h2><span>江北区</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+				</ul>
+			</div>
+			</div>
+
+			<div class="WPro WPro3">
+			<div class="WProB">
+				<img src="img/pie_bg.png" alt="统计"><h5>5845</h5>
+				<h3>上海</h3><h4>1340</h4>
+			</div>		
+			<div class="BPro">
+				<canvas id="canvas3" class="canvas" height="400" width="400"></canvas>
+				<div class="canFont"><h1>70%</h1><p>上海</p></div>
+				<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+				<div class="href1"><a href="content3_3.html"></a></div>
+			</div>
+			<div class="SPro">
+				<ul>
+					<li><canvas id="canvas3_1" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>75%</h2><span>黄浦区</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas3_2" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>67%</h2><span>徐汇区</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas3_3" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>85%</h2><span>长宁区</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas3_4" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>75%</h2><span>静安区</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas3_5" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>80%</h2><span>虹口区</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+				</ul>
+			</div>
+			</div>
+
+			<div class="WPro WPro4">	
+				<div class="WProB">
+				<img src="img/pie_bg.png" alt="统计"><h5>5241</h5>
+				<h3>福建省</h3><h4>940</h4>
+			</div>	
+			<div class="BPro">
+				<canvas id="canvas4" class="canvas" height="400" width="400"></canvas>
+				<div class="canFont"><h1>85%</h1><p>福建省</p></div>
+				<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+				<div class="href1"><a href="content3_4.html"></a></div>
+			</div>
+			<div class="SPro">
+				<ul>
+					<li><canvas id="canvas4_1" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>75%</h2><span>福州</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas4_2" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>67%</h2><span>厦门</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas4_3" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>85%</h2><span>泉州</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas4_4" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>80%</h2><span>漳州</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+					<li><canvas id="canvas4_5" class="canvas" height="400" width="400"></canvas>
+						<div class="canFontSmall"><h2>80%</h2><span>福州</span></div>
+						<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+					</li>
+				</ul>
+			</div>
+			</div>
+			
+			<div class="WPro WPro5">
+			<div class="WProB">
+				<img src="img/pie_bg.png" alt="统计"><h5>4245</h5>
+				<h3>陕西省</h3><h4>840</h4>
+			</div>		
+			<div class="BPro">
+				<canvas id="canvas5" class="canvas" height="200" width="200"></canvas>
+				<div class="canFont"><h1>68%</h1><p>陕西省</p></div>
+				<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+				<div class="href1"><a href="content3_3.html"></a></div>
+			</div>
+			</div>
+
+			<div class="WPro WPro6">
+			<div class="WProB">
+				<img src="img/pie_bg.png" alt="统计"><h5>5445</h5>
+				<h3>湖北省</h3><h4>1340</h4>
+			</div>		
+			<div class="BPro">
+				<canvas id="canvas6" class="canvas" height="200" width="200"></canvas>
+				<div class="canFont"><h1>76%</h1><p>湖北省</p></div>
+				<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+				<div class="href1"><a href="content3_3.html"></a></div>
+			</div>
+			</div>
+
+			<div class="WPro WPro7">
+			<div class="WProB">
+				<img src="img/pie_bg.png" alt="统计"><h5>4645</h5>
+				<h3>广西省</h3><h4>950</h4>
+			</div>		
+			<div class="BPro">
+				<canvas id="canvas7" class="canvas" height="200" width="200"></canvas>
+				<div class="canFont"><h1>79%</h1><p>广西省</p></div>
+				<div class="PieB"><img src="img/Pie.png" alt="圆形背景"></div>
+				<div class="href1"><a href="content3_3.html"></a></div>
+			</div>
+			</div>
+
+		</div>
+		<div id="left">
+			<div class="time">
+				<h3>年销售总额（万元）</h3>
+			<ul id="ti">
+				<li><p>5</p></li>
+				<li><p>4</p></li>
+				<li><p>6</p></li>
+				<li><p>8</p></li>
+				<li><p>2</p></li>
+				<li><p>7</p></li>
+				<li><p>2</p></li>
+				<li><p>4</p></li>
+			</ul>
+			</div>
+
+			<div class="time2">
+				<div class="time time3">
+				<h3>当月销售情况</h3>
+			<ul>
+				<li><p>3</p></li>
+				<li><p>2</p></li>
+				<li><p>5</p></li>
+				<li><p>8</p></li>
+				<li><p>9</p></li>
+				<li><p>4</p></li>
+				<li><p>2</p></li>
+			</ul>
+			</div>
+
+			<div class="time time4">
+				<h3>当日销售情况</h3>
+			<ul>
+				<li><p>1</p></li>
+				<li><p>5</p></li>
+				<li><p>6</p></li>
+				<li><p>4</p></li>
+				<li><p>7</p></li>
+				<li><p>1</p></li>
+			</ul>
+			</div>
+			</div>
+			<div class="line">
+				<img src="img/in_line1.png" alt="折线背景">
+			</div>
+			<div class="line">
+				<img src="img/in_line.png" alt="折线背景">	
+			</div>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script>
+
+
+
+
+var pieData1 = [
+				{value: 65,color:"#e62e2b"},
+				{value : 35,color : "rgba(255,255,255,0)"},
+					];
+var pieData2 = [
+				{value: 70,color:"#e62e2b"},
+				{value : 30,color : "rgba(255,255,255,0)"},
+					];	
+var pieData3 = [
+				{value: 75,color:"#e62e2b"},
+				{value : 25,color : "rgba(255,255,255,0)"},
+					];
+var pieData4 = [
+				{value: 80,color:"#e62e2b"},
+				{value : 20,color : "rgba(255,255,255,0)"},
+					];
+var pieData5 = [
+				{value:85 ,color:"#e62e2b"},
+				{value :15 ,color : "rgba(255,255,255,0)"},
+					];
+var pieData6 = [
+				{value: 82,color:"#e62e2b"},
+				{value : 18,color : "rgba(255,255,255,0)"},
+					];
+var pieData7 = [
+				{value: 77,color:"#e62e2b"},
+				{value : 23,color : "rgba(255,255,255,0)"},
+					];	
+var pieData8 = [
+				{value: 67,color:"#e62e2b"},
+				{value : 33,color : "rgba(255,255,255,0)"},
+					];	
+var pieData9 = [
+				{value: 90,color:"#e62e2b"},
+				{value :10 ,color : "rgba(255,255,255,0)"},
+					];
+
+
+var pieData1_1 = [
+				{value: 65,color:"rgba(255,255,255,0.3)"},
+				{value : 35,color : "rgba(255,255,255,0)"},
+					];
+var pieData1_2 = [
+				{value: 70,color:"rgba(255,255,255,0.3)"},
+				{value : 30,color : "rgba(255,255,255,0)"},
+					];	
+var pieData1_3 = [
+				{value: 75,color:"rgba(255,255,255,0.3)"},
+				{value : 25,color : "rgba(255,255,255,0)"},
+					];
+var pieData1_4 = [
+				{value: 80,color:"rgba(255,255,255,0.3)"},
+				{value : 20,color : "rgba(255,255,255,0)"},
+					];
+var pieData1_5 = [
+				{value: 85,color:"rgba(255,255,255,0.3)"},
+				{value : 15,color : "rgba(255,255,255,0)"},
+					];
+var pieData1_6 = [
+				{value: 78,color:"rgba(255,255,255,0.3)"},
+				{value : 22,color : "rgba(255,255,255,0)"},
+					];
+var pieData1_7 = [
+				{value: 67,color:"rgba(255,255,255,0.3)"},
+				{value : 33,color : "rgba(255,255,255,0)"},
+					];	
+var pieData1_8 = [
+				{value: 77,color:"rgba(255,255,255,0.3)"},
+				{value : 23,color : "rgba(255,255,255,0)"},
+					];	
+var pieData1_9 = [
+				{value: 90,color:"rgba(255,255,255,0.5)"},
+				{value : 10,color : "rgba(255,255,255,0)"},
+					];																																			
+var myPie = new Chart(document.getElementById("canvas1").getContext("2d")).Pie(pieData8,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas1_1").getContext("2d")).Pie(pieData1_3,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas1_2").getContext("2d")).Pie(pieData1_7,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas1_3").getContext("2d")).Pie(pieData1_5,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas1_4").getContext("2d")).Pie(pieData1_3,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas1_5").getContext("2d")).Pie(pieData1_4,{responsive : true});	
+
+var myPie = new Chart(document.getElementById("canvas2").getContext("2d")).Pie(pieData6,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas2_1").getContext("2d")).Pie(pieData1_3,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas2_2").getContext("2d")).Pie(pieData1_7,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas2_3").getContext("2d")).Pie(pieData1_5,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas2_4").getContext("2d")).Pie(pieData1_3,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas2_5").getContext("2d")).Pie(pieData1_4,{responsive : true});	
+
+var myPie = new Chart(document.getElementById("canvas3").getContext("2d")).Pie(pieData7,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas3_1").getContext("2d")).Pie(pieData1_3,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas3_2").getContext("2d")).Pie(pieData1_7,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas3_3").getContext("2d")).Pie(pieData1_5,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas3_4").getContext("2d")).Pie(pieData1_3,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas3_5").getContext("2d")).Pie(pieData1_4,{responsive : true});	
+
+var myPie = new Chart(document.getElementById("canvas4").getContext("2d")).Pie(pieData5,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas4_1").getContext("2d")).Pie(pieData1_3,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas4_2").getContext("2d")).Pie(pieData1_7,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas4_3").getContext("2d")).Pie(pieData1_5,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas4_4").getContext("2d")).Pie(pieData1_3,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas4_5").getContext("2d")).Pie(pieData1_4,{responsive : true});	
+
+var myPie = new Chart(document.getElementById("canvas5").getContext("2d")).Pie(pieData4,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas6").getContext("2d")).Pie(pieData3,{responsive : true});	
+var myPie = new Chart(document.getElementById("canvas7").getContext("2d")).Pie(pieData2,{responsive : true});	
+
+
+$(window).resize(function(){
+	var $SProLo=$(".SPro ul li");
+   $(".WPro").height($(".WPro").width());
+   $SProLo.height($SProLo.width());
+
+});
+
+
+
+	function ExternalCall(json)
+		{	
+		var h=eval('(' + json + ')').sheng;
+   	 	if(h=="c1"){$(function(){$(".WPro").eq(0).click()})}else if(h=="c2"){$(function(){$(".WPro").eq(1).click()})}else if(h=="c3"){$(function(){$(".WPro").eq(2).click()})}
+		}
+
+	$(function(){
+		$(function(){$("#border_").css({"height":$(window).height()-2,"width":$(window).width()-2})})
+
+
+		function c1(){alert(1)}
+
+		
+		var $SProLo=$(".SPro ul li");
+		$(".WPro").height($(".WPro").width());
+  		$SProLo.height($SProLo.width());	
+		$(".WPro").click(function(){
+			$(this).find(".href1").show();
+			$(this).find(".WProB").fadeOut();
+			$(this).siblings(".WPro").find(".WProB").fadeIn("slow");
+			$(this).siblings(".WPro").find(".href1").hide();
+			$(this).find("ul li").eq(0).stop(true).animate({"left":"-10%","top":"5%",opacity:'0.8'},500);
+			$(this).find("ul li").eq(1).stop(true).animate({"left":"-8%","top":"40%",opacity:'0.8'},700);
+			$(this).find("ul li").eq(2).stop(true).animate({"left":"15%","top":"68%",opacity:'0.8'},900);
+			$(this).find("ul li").eq(3).stop(true).animate({"left":"51%","top":"80%",opacity:'0.8'},1100);
+			$(this).find("ul li").eq(4).stop(true).animate({"left":"90%","top":"65%",opacity:'0.8'},1300);
+			$(this).siblings(".WPro").find("ul li").stop(true).animate({"left":"40%","top":"20%",opacity:'0'});
+		});
+
+
+		var $timeLi=$(".time ul li");
+		var $timeLi1=$(".time3 ul li");
+		var $timeLi2=$(".time4 ul li");
+		var s1=0;var s2=1;var s3=2;var s4=0;var s5=0;var s6=0;
+		var t1=setInterval(function(){timeChange()},1);
+		$timeLi.eq(0).hide();
+		$timeLi.eq(1).hide();
+		$timeLi.eq(2).hide();
+		$timeLi1.eq(0).hide();
+		$timeLi1.eq(1).hide();
+		$timeLi1.eq(2).hide();
+		$timeLi2.eq(0).hide();
+		$timeLi2.eq(1).hide();
+		$timeLi2.eq(2).hide();
+		setTimeout(function(){$timeLi.eq(2).show()},500);
+		setTimeout(function(){$timeLi.eq(1).show();$(".canFont").fadeIn("slow");$(".line img").fadeIn("slow")},1000);
+		setTimeout(function(){$timeLi.eq(0).show()},3100);
+		setTimeout(function(){$timeLi1.eq(2).show()},500);
+		setTimeout(function(){$timeLi1.eq(1).show()},1000);
+		setTimeout(function(){$timeLi1.eq(0).show()},3100);
+		setTimeout(function(){$timeLi2.eq(2).show()},500);
+		setTimeout(function(){$timeLi2.eq(1).show()},1000);
+		setTimeout(function(){$timeLi2.eq(0).show();$(".WProB").fadeIn("slow")},3100);
+		setTimeout(function(){clearInterval(t1);$(".time ul li p").eq(7).html(1)},3000);
+
+		var i=0;var m=0;var n=1;
+		setInterval(function(){timed()},3000);		
+		function timed()
+		{
+		var v1=setInterval(function(){
+			var tim0=parseInt($("#ti li").eq(0).find("p").html());
+			var tim1=parseInt($("#ti li").eq(1).find("p").html());
+			var tim2=parseInt($("#ti li").eq(2).find("p").html());
+			var tim3=parseInt($("#ti li").eq(3).find("p").html());
+			var tim4=parseInt($("#ti li").eq(4).find("p").html());
+			i++;
+			$("#ti li").eq(0).find("p").html(i);
+			if(tim0>=7){
+				$("#ti li").eq(1).find("p").html(tim1+3);
+				$("#ti li").eq(0).find("p").html(0);
+				i=0;
+				if(tim1>=9){
+				$("#ti li").eq(2).find("p").html(tim2+1);
+				$("#ti li").eq(1).find("p").html(0);
+				if(tim2>=9){
+				$("#ti li").eq(3).find("p").html(tim3+1);
+				$("#ti li").eq(2).find("p").html(0);
+				if(tim3>=9){
+				$("#ti li").eq(4).find("p").html(tim4+1);
+				$("#ti li").eq(3).find("p").html(0);
+				if(tim4>=9){$("#ti li").eq(5).find("p").html(8);$("#ti li").eq(4).find("p").html(0);}
+			}}}}},1);
+		setTimeout(function(){clearInterval(v1);},1500);
+		}
+
+	})
+
+</script>
+</html>
